@@ -49,3 +49,5 @@ public class WinnerState implements StateInterface{
         return "Machine is giving you a gumball";
     }
 }
+
+//6510405865 Oanchana Changcharoen
