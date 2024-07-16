@@ -1,6 +1,9 @@
 package models;
 
+import java.util.Random;
+
 public class HasQuarterState implements StateInterface {
+    Random random = new Random(System.currentTimeMillis());
     private final Machine machine;
 
     public HasQuarterState(Machine machine) {
@@ -13,6 +16,12 @@ public class HasQuarterState implements StateInterface {
     }
 
     @Override
+    public void chooseFlavor(String flavor) {
+        machine.getGumball().setFlavor(flavor);
+        System.out.println("You have chosen the flavor " + flavor);
+    }
+
+    @Override
     public void ejectQuarter() {
         machine.setState(machine.getNoQuarterState());
         System.out.println("Quarter returned");
@@ -20,8 +29,13 @@ public class HasQuarterState implements StateInterface {
 
     @Override
     public void turnCrank() {
-        machine.setState(machine.getGumballSoldState());
         System.out.println("You turned ...");
+        int winner = random.nextInt(5);
+        if ((winner == 0) && (machine.getGumball().getAmount() > 1)) {
+            machine.setState(machine.getWinnerState());
+        } else {
+            machine.setState(machine.getGumballSoldState());
+        }
     }
 
     @Override

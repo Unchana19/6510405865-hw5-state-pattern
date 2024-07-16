@@ -1,6 +1,6 @@
 package models;
 
-public class Machine implements StateInterface {
+public class Machine {
     private final String name;
     private final Gumball gumball;
     private StateInterface state;
@@ -9,6 +9,8 @@ public class Machine implements StateInterface {
     private final StateInterface noQuarterState;
     private final StateInterface gumballSoldState;
     private final StateInterface outOfGumballState;
+    private final StateInterface winnerState;
+    private final StateInterface chooseFlavorState;
 
     public Machine(String name, Gumball gumball) {
         this.name = name;
@@ -17,6 +19,8 @@ public class Machine implements StateInterface {
         this.hasQuarterState = new HasQuarterState(this);
         this.noQuarterState = new NoQuarterState(this);
         this.gumballSoldState = new GumballSoldState(this);
+        this.winnerState = new WinnerState(this);
+        this.chooseFlavorState = new ChooseFlavorState(this);
         this.outOfGumballState = new OutOfGumballState();
 
         this.state = noQuarterState;
@@ -26,23 +30,20 @@ public class Machine implements StateInterface {
         gumball.gumballRelease();
     }
 
-    @Override
     public void insertQuarter() {
         this.state.insertQuarter();
     }
 
-    @Override
     public void ejectQuarter() {
         this.state.ejectQuarter();
     }
 
-    @Override
-    public void turnCrank() {
-        this.state.turnCrank();
+    public void chooseFlavor(String flavor) {
+        this.state.chooseFlavor(flavor);
     }
 
-    @Override
-    public void dispense() {
+    public void turnCrank() {
+        this.state.turnCrank();
         this.state.dispense();
     }
 
@@ -68,6 +69,14 @@ public class Machine implements StateInterface {
 
     public StateInterface getOutOfGumballState() {
         return outOfGumballState;
+    }
+
+    public StateInterface getChooseFlavorState() {
+        return chooseFlavorState;
+    }
+
+    public StateInterface getWinnerState() {
+        return winnerState;
     }
 
     public void setState(StateInterface state) {

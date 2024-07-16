@@ -9,8 +9,13 @@ public class NoQuarterState implements StateInterface {
 
     @Override
     public void insertQuarter() {
-        machine.setState(machine.getHasQuarterState());
+        machine.setState(machine.getChooseFlavorState());
         System.out.println("You inserted a quarter");
+    }
+
+    @Override
+    public void chooseFlavor(String flavor) {
+        System.out.println("You haven't inserted a quarter");
     }
 
     @Override

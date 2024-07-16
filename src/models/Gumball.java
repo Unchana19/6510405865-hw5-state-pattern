@@ -2,6 +2,7 @@ package models;
 
 public class Gumball {
     private int amount;
+    private String flavor;
 
     public Gumball(int amount) {
         this.amount = amount;
@@ -17,6 +18,14 @@ public class Gumball {
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public String getFlavor() {
+        return flavor;
+    }
+
+    public void setFlavor(String flavor) {
+        this.flavor = flavor;
     }
 }
 

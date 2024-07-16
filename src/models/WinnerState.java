@@ -1,19 +1,20 @@
 package models;
 
-public class GumballSoldState implements StateInterface{
+public class WinnerState implements StateInterface{
     private final Machine machine;
 
-    public GumballSoldState(Machine machine) {
+    public WinnerState(Machine machine) {
         this.machine = machine;
     }
+
     @Override
     public void insertQuarter() {
-        System.out.println("Please wait, we're already giving you a gumball");
+        System.out.println("You can't insert a quarter");
     }
 
     @Override
     public void chooseFlavor(String flavor) {
-        System.out.println("No gumball dispense");
+        System.out.println("You can't choose flavor");
     }
 
     @Override
@@ -28,13 +29,18 @@ public class GumballSoldState implements StateInterface{
 
     @Override
     public void dispense() {
+        System.out.println("YOU'RE A WINNER! You got two gumballs for your quarter");
         machine.gumballSold();
-        System.out.println("A gumball comes rolling out the slot");
-        if (machine.getGumball().getAmount() > 0) {
-            machine.setState(machine.getNoQuarterState());
-        } else {
-            System.out.println("Oops, out of gumballs!");
+        if(machine.getGumball().getAmount() == 0) {
             machine.setState(machine.getOutOfGumballState());
+        } else {
+            machine.gumballSold();
+            if(machine.getGumball().getAmount() > 0) {
+                machine.setState(machine.getNoQuarterState());
+            } else {
+                System.out.println("Oops, out of gumball!");
+                machine.setState(machine.getOutOfGumballState());
+            }
         }
     }
 
@@ -43,5 +49,3 @@ public class GumballSoldState implements StateInterface{
         return "Machine is giving you a gumball";
     }
 }
-
-//6510405865 Oanchana Changcharoen

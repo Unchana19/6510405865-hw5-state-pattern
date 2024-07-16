@@ -10,34 +10,12 @@ public class Main {
 
         gumballMachine.insertQuarter();
         gumballMachine.turnCrank();
-        gumballMachine.dispense();
 
         System.out.println(gumballMachine);
 
         gumballMachine.insertQuarter();
-        gumballMachine.ejectQuarter();
-        gumballMachine.turnCrank();
-
-        System.out.println(gumballMachine);
-
-        gumballMachine.insertQuarter();
-        gumballMachine.turnCrank();
-        gumballMachine.dispense();
-        gumballMachine.insertQuarter();
-        gumballMachine.turnCrank();
-        gumballMachine.dispense();
-        gumballMachine.ejectQuarter();
-
-        System.out.println(gumballMachine);
-
-        gumballMachine.insertQuarter();
-        gumballMachine.insertQuarter();
-        gumballMachine.turnCrank();
-        gumballMachine.dispense();
-        gumballMachine.insertQuarter();
-        gumballMachine.turnCrank();
-        gumballMachine.dispense();
-        gumballMachine.insertQuarter();
+        gumballMachine.chooseFlavor("Mango");
+        gumballMachine.chooseFlavor("Orange");
         gumballMachine.turnCrank();
 
         System.out.println(gumballMachine);

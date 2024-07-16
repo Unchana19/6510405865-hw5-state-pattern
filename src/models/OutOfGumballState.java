@@ -7,6 +7,11 @@ public class OutOfGumballState implements StateInterface {
     }
 
     @Override
+    public void chooseFlavor(String flavor) {
+        System.out.println("No gumball dispensed");
+    }
+
+    @Override
     public void ejectQuarter() {
         System.out.println("You can't eject, you haven't inserted a quarter yet");
     }
