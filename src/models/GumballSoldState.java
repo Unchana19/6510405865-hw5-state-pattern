@@ -29,7 +29,7 @@ public class GumballSoldState implements StateInterface{
     @Override
     public void dispense() {
         machine.gumballSold();
-        System.out.println("A gumball comes rolling out the slot");
+        System.out.println("A " + machine.getGumball().getFlavor() +  " gumball comes rolling out the slot");
         if (machine.getGumball().getAmount() > 0) {
             machine.setState(machine.getNoQuarterState());
         } else {

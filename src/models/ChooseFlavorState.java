@@ -27,7 +27,7 @@ public class ChooseFlavorState implements StateInterface {
 
     @Override
     public void turnCrank() {
-        System.out.println("Please choose flavor first");
+        System.out.println("You have to choose flavor first");
     }
 
     @Override

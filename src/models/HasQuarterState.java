@@ -30,7 +30,7 @@ public class HasQuarterState implements StateInterface {
     @Override
     public void turnCrank() {
         System.out.println("You turned ...");
-        int winner = random.nextInt(5);
+        int winner = random.nextInt(10);
         if ((winner == 0) && (machine.getGumball().getAmount() > 1)) {
             machine.setState(machine.getWinnerState());
         } else {
